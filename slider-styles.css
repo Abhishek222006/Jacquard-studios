@@ -283,28 +283,28 @@ color: #fff;
 
 @media (max-width: 639px) {
 	:root {
-		--slide-width: min(72vw, 340px);
-		--slide-aspect: 4 / 5;
+		--slide-width: min(86vw, 390px);
+		--slide-aspect: 3 / 4;
 	}
 
 	.portfolio-section {
 		min-height: auto;
-		padding: 0 0 4rem;
+		padding: 0 0 2.5rem;
 	}
 
 	.slider {
 		width: 100%;
-		margin-top: 1rem;
-		gap: .15rem;
+		margin-top: .4rem;
+		gap: 0;
 	}
 
 	.slider--btn {
-		--size: 34px;
+		--size: 38px;
 		opacity: 0.9;
 	}
 
 	.slides__wrapper {
-		padding: 0 .15rem;
+		padding: 0;
 	}
 
 	.slide,
@@ -313,41 +313,41 @@ color: #fff;
 	}
 
 	.slide[data-current] {
-		--slide-scale: 1.08;
+		--slide-scale: 1.14;
 	}
 
 	.slide[data-next] {
-		--slide-tx: calc(1 * var(--slide-width) * 0.82);
-		--slide-rotY: -42deg;
+		--slide-tx: calc(1 * var(--slide-width) * 0.74);
+		--slide-rotY: -38deg;
 	}
 
 	.slide[data-previous] {
-		--slide-tx: calc(-1 * var(--slide-width) * 0.82);
-		--slide-rotY: 42deg;
+		--slide-tx: calc(-1 * var(--slide-width) * 0.74);
+		--slide-rotY: 38deg;
 	}
 
 	.slide__bg {
-		inset: -12%;
+		inset: -8%;
 	}
 
 	.slide-info--text__wrapper {
 		left: 4%;
-		bottom: 10%;
+		bottom: 9%;
 		width: 92%;
 	}
 
 	.slide-info--text[data-title],
 	.slide-info--text[data-subtitle] {
-		font-size: clamp(1.4rem, 6vw, 2.6rem);
-		letter-spacing: 0.12em;
+		font-size: clamp(1.7rem, 7vw, 3rem);
+		letter-spacing: 0.1em;
 	}
 
 	.slide-info--text[data-description] {
-		font-size: clamp(.7rem, 3.2vw, .95rem);
+		font-size: clamp(.78rem, 3.2vw, 1rem);
 		margin-left: .15rem;
 	}
 
 	.slider-loader__text {
-		font-size: clamp(2.5rem, 16vw, 4.5rem);
+		font-size: clamp(3rem, 18vw, 5rem);
 	}
 }

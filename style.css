@@ -622,8 +622,8 @@ ul, ol { list-style: none; }
   .hero__slider-text { left: 4rem; right: 1rem; }
   .hero__asterisk { display: none; }
   .section-heading { padding: 6rem 1.25rem 3.5rem; }
-  .section-heading__label { font-size: .72rem; }
-  .section-heading__title { font-size: clamp(2.6rem, 11vw, 4rem); }
+  .section-heading__label { font-size: .8rem; letter-spacing: .34em; }
+  .section-heading__title { font-size: clamp(3.2rem, 15vw, 5.2rem); line-height: .95; }
   .portfolio-section { padding-bottom: 3rem; }
   .portfolio-grid { columns: 1; padding: 0 0.85rem; column-gap: 0; }
   .portfolio-item { margin-bottom: .85rem; border-radius: 1rem; }
