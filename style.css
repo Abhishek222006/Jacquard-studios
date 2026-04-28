@@ -16,8 +16,8 @@
 }
 
 /* ===== HERO CENTERING OVERRIDES ===== */
-.hero__brand { display: block !important; position: absolute !important; top: 18px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 70 !important; pointer-events: none !important; color: #fff !important; font-weight: 700 !important; letter-spacing: 0.32em !important; font-size: clamp(1.6rem, 5vw, 3.2rem) !important; }
-.hero__menu-btn { position: absolute !important; top: 14px !important; left: 14px !important; z-index: 80 !important; pointer-events: auto !important; background: rgba(0,0,0,0.35) !important; color: #fff !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.45rem 0.9rem !important; }
+.hero__brand { display: block !important; position: absolute !important; top: 12px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 70 !important; pointer-events: none !important; color: #fff !important; font-weight: 700 !important; letter-spacing: 0.32em !important; font-size: clamp(1.6rem, 5vw, 3.2rem) !important; }
+.hero__menu-btn { position: absolute !important; top: 36px !important; left: 18px !important; z-index: 80 !important; pointer-events: auto !important; background: rgba(0,0,0,0.35) !important; color: #fff !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.45rem 0.9rem !important; }
 .hero__content { position: absolute !important; bottom: 2rem !important; left: 1.25rem !important; transform: none !important; align-items: flex-start !important; text-align: left !important; width: min(92vw, 34rem) !important; padding: 0 !important; }
 .hero__title { display: none !important; }
 
@@ -26,12 +26,12 @@
 .hero__nav a, .hero__nav button { color: #fff !important; }
 
 /* push the video container down so the brand sits above the hero visual */
-.hero__container { margin-top: 3.6rem; }
-@media (max-width: 639px) { .hero__container { margin-top: 3rem; } }
+.hero__container { margin-top: 6.8rem; }
+@media (max-width: 639px) { .hero__container { margin-top: 5rem; } }
 
 @media (max-width: 639px) {
-  .hero__menu-btn { top: 12px; left: 12px; padding: .45rem .8rem; font-size: .9rem; }
-  .hero__brand { top: 12px; font-size: clamp(2rem, 10vw, 4.4rem) !important; letter-spacing: .28em !important; }
+  .hero__menu-btn { top: 18px; left: 12px; padding: .45rem .8rem; font-size: .9rem; }
+  .hero__brand { top: 8px; font-size: clamp(2rem, 10vw, 4.4rem) !important; letter-spacing: .28em !important; }
   .hero__title { display: none !important; }
 }
 
