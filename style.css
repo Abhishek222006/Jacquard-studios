@@ -31,8 +31,20 @@
 @media (max-width: 639px) { .hero__container { margin-top: 5.4rem; } }
 
 @media (max-width: 639px) {
-  .hero__menu-btn { top: 20px; left: 12px; width: 44px !important; height: 38px !important; }
-  .hero__brand { top: 8px; font-size: clamp(2rem, 10vw, 4.4rem) !important; letter-spacing: .28em !important; }
+  .hero__nav { min-height: 78px !important; padding: 0 12px !important; }
+  .hero__menu-btn {
+    top: 50% !important;
+    left: 12px !important;
+    transform: translateY(-50%) !important;
+    width: 42px !important;
+    height: 36px !important;
+  }
+  .hero__brand {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: clamp(1.65rem, 8.2vw, 2.5rem) !important;
+    letter-spacing: .24em !important;
+  }
   .hero__title { display: none !important; }
 }
 
