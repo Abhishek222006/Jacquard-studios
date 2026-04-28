@@ -577,11 +577,52 @@ ul, ol { list-style: none; }
    MOBILE OVERRIDES
    ============================================ */
 @media (max-width: 639px) {
-  .hero { height: calc(100svh - 20px); }
+  .hero { height: 100svh; }
   .hero__container {
     background: #000 url("images/hero-1.jpg") center center / cover no-repeat;
   }
   .hero__video { display: none; }
+
+  /* Make header overlay transparent and minimal on mobile */
+  .hero__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: .75rem 1rem;
+    background: transparent;
+    z-index: 60;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .hero__nav a, .hero__nav button { color: #fff; }
+  .hero__menu-btn {
+    border: 1px solid rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    padding: .5rem .9rem;
+    font-size: .85rem;
+    border-radius: 6px;
+  }
+  .hero__brand {
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: .32em;
+    font-weight: 600;
+  }
+
+  /* Move hero content slightly higher to reveal poster image */
+  .hero__content {
+    bottom: 3.2rem;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    padding: 1rem;
+  }
   .hero__nav {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
