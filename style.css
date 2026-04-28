@@ -15,6 +15,17 @@
   --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ===== HERO CENTERING OVERRIDES ===== */
+.hero__brand { display: none !important; }
+.hero__menu-btn { position: absolute !important; top: 18px !important; left: 18px !important; z-index: 60 !important; pointer-events: auto !important; background: rgba(0,0,0,0.35) !important; color: #fff !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 8px !important; padding: 0.5rem 1rem !important; }
+.hero__content { position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; align-items: center !important; text-align: center !important; width: min(92vw, 70rem) !important; padding: 0 1rem !important; }
+.hero__title { font-size: clamp(3.6rem, 12vw, 8rem) !important; letter-spacing: 0.22em !important; font-weight: 700 !important; line-height: 0.9 !important; }
+
+@media (max-width: 639px) {
+  .hero__menu-btn { top: 12px; left: 12px; padding: .45rem .8rem; font-size: .9rem; }
+  .hero__title { font-size: clamp(3.2rem, 12vw, 6rem) !important; }
+}
+
 /* ============================================
    RESET
    ============================================ */
