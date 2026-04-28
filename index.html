@@ -915,24 +915,26 @@
       const loaderFill = document.getElementById('loaderProgressFill');
       const words = ['Loading', 'Generating', 'Ready'];
       let wIdx = 0;
-      const wInt = setInterval(() => {
-        if (wIdx >= words.length - 1) { clearInterval(wInt); return; }
-        loaderWord.style.opacity = '0';
-        loaderWord.style.transform = 'translateY(-10px)';
-        setTimeout(() => {
-          wIdx++;
-          loaderWord.textContent = words[wIdx];
-          loaderWord.style.transition = 'none';
-          loaderWord.style.transform = 'translateY(10px)';
-          loaderWord.style.opacity = '0';
-          void loaderWord.offsetWidth;
-          loaderWord.style.transition = 'opacity .2s cubic-bezier(.4,0,.2,1),transform .2s cubic-bezier(.4,0,.2,1)';
-          loaderWord.style.opacity = '1';
-          loaderWord.style.transform = 'translateY(0)';
-        }, 150);
-      }, 400);
       const isMobile = window.matchMedia('(max-width: 639px), (pointer: coarse)').matches;
-      const maxLoaderWait = isMobile ? 2200 : 3500;
+      if (!isMobile) {
+        const wInt = setInterval(() => {
+          if (wIdx >= words.length - 1) { clearInterval(wInt); return; }
+          loaderWord.style.opacity = '0';
+          loaderWord.style.transform = 'translateY(-10px)';
+          setTimeout(() => {
+            wIdx++;
+            loaderWord.textContent = words[wIdx];
+            loaderWord.style.transition = 'none';
+            loaderWord.style.transform = 'translateY(10px)';
+            loaderWord.style.opacity = '0';
+            void loaderWord.offsetWidth;
+            loaderWord.style.transition = 'opacity .2s cubic-bezier(.4,0,.2,1),transform .2s cubic-bezier(.4,0,.2,1)';
+            loaderWord.style.opacity = '1';
+            loaderWord.style.transform = 'translateY(0)';
+          }, 150);
+        }, 400);
+      }
+      const maxLoaderWait = isMobile ? 700 : 2500;
       let start = null;
       let pageLoaded = document.readyState === 'complete';
       let forcedReady = false;
@@ -952,10 +954,11 @@
       
       function tick(ts) {
         if (!start) start = ts;
-        let p = Math.min((ts - start) / 1500 * 100, 100);
+        const minDuration = isMobile ? 520 : 1200;
+        let p = Math.min((ts - start) / minDuration * 100, 100);
         
         // Keep the loader responsive on slower mobile connections, but never block indefinitely.
-        if (!pageLoaded && !forcedReady && p > (isMobile ? 82 : 90)) p = isMobile ? 82 : 90;
+        if (!pageLoaded && !forcedReady && p > (isMobile ? 92 : 90)) p = isMobile ? 92 : 90;
         else if (pageLoaded && p < 100) p = 100;
 
         loaderCounter.textContent = Math.round(p) + '%';
@@ -972,7 +975,7 @@
                 setTimeout(() => el.classList.add('visible'), 150 + i * 150);
               });
             }, 300);
-          }, 150);
+          }, isMobile ? 60 : 150);
         }
       }
       requestAnimationFrame(tick);
@@ -1047,28 +1050,33 @@
 
     // Body text with enhanced readability
     const bodyText = "Over the last several years, we've partnered with leading brands across activewear, streetwear, and heritage fashion — delivering campaign-ready visuals at a fraction of the time and cost of traditional shoots.\n\nNo sets. No schedules. No limits. Just precise, art-directed imagery that tells your brand's story exactly the way you imagined it.";
+    const isMobileDevice = window.matchMedia('(max-width: 639px), (pointer: coarse)').matches;
     const aboutBody = document.getElementById('aboutBody');
-    const chars = [];
-    bodyText.split('').forEach(ch => {
-      const span = document.createElement('span');
-      span.textContent = ch;
-      span.className = 'about__char';
-      aboutBody.appendChild(span);
-      chars.push(span);
-    });
-    function updateCharOpacity() {
-      const rect = aboutBody.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const progress = Math.max(0, Math.min(1, (vh * 0.8 - rect.top) / (rect.height + vh * 0.3)));
-      chars.forEach((ch, i) => {
-        const charP = i / chars.length;
-        const lo = charP - 0.1, hi = charP + 0.05;
-        const o = Math.max(0.15, Math.min(1, (progress - lo) / (hi - lo)));
-        ch.style.opacity = o;
+    if (isMobileDevice) {
+      aboutBody.textContent = bodyText;
+    } else {
+      const chars = [];
+      bodyText.split('').forEach(ch => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        span.className = 'about__char';
+        aboutBody.appendChild(span);
+        chars.push(span);
       });
+      function updateCharOpacity() {
+        const rect = aboutBody.getBoundingClientRect();
+        const vh = window.innerHeight;
+        const progress = Math.max(0, Math.min(1, (vh * 0.8 - rect.top) / (rect.height + vh * 0.3)));
+        chars.forEach((ch, i) => {
+          const charP = i / chars.length;
+          const lo = charP - 0.1, hi = charP + 0.05;
+          const o = Math.max(0.15, Math.min(1, (progress - lo) / (hi - lo)));
+          ch.style.opacity = o;
+        });
+        requestAnimationFrame(updateCharOpacity);
+      }
       requestAnimationFrame(updateCharOpacity);
     }
-    requestAnimationFrame(updateCharOpacity);
 
     // ===== 6. LIGHTBOX =====
     const lightbox = document.getElementById('lightbox');

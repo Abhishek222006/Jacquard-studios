@@ -287,6 +287,15 @@ color: #fff;
 		--slide-aspect: 3 / 4;
 	}
 
+	.slide__bg {
+		display: none;
+		background-image: none !important;
+	}
+
+	.slide {
+		transform: translate3d(var(--slide-tx), var(--slide-ty), 0) scale(var(--slide-scale));
+	}
+
 	.portfolio-section {
 		min-height: auto;
 		padding: 0 0 2.5rem;
