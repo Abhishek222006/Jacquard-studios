@@ -9,7 +9,7 @@
   <meta property="og:description" content="Editorial & fine art photography portfolio — Campaigns, E-commerce & Cinematic Storytelling.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="images/hero-1.jpg">
-  <title>JACQUARD STUDIO — Photography Portfolio</title>
+  <title>Jacquard Studio — AI Campaign Agency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -820,9 +820,9 @@
   <!-- ════════════════ ABOUT ════════════════ -->
   <section class="about" id="about">
     <div class="about__card">
-      <span class="about__label">Visual Arts</span>
-      <h2 class="about__heading" id="aboutHeading"></h2>
-      <p class="about__body" id="aboutBody"></p>
+      <span class="about__label">Our Story</span>
+      <h2 class="about__heading" id="aboutHeading">Jacquard Studio</h2>
+      <p class="about__body" id="aboutBody">Jacquard Studio is an AI-first creative agency built for brands that refuse to wait. We combine generative AI with editorial art direction to deliver campaign-grade visuals — without the shoot, without the delays. Founded by creatives obsessed with the future of visual storytelling, we work with brands globally to build worlds, not just images.</p>
     </div>
   </section>
 
@@ -841,6 +841,7 @@
         <div class="feature-card reveal-card">
           <span class="feature-card__num">01</span>
           <h3 class="feature-card__title">AI Editorial</h3>
+          <div class="feature-card__price">Starting from $299</div>
           <ul class="feature-card__list">
             <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fashion & lifestyle visuals without a shoot</li>
             <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Magazine-quality output, delivered in days</li>
@@ -852,6 +853,7 @@
         <div class="feature-card reveal-card">
           <span class="feature-card__num">02</span>
           <h3 class="feature-card__title">Campaign Visuals</h3>
+          <div class="feature-card__price">Starting from $799</div>
           <ul class="feature-card__list">
             <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Full AI-directed brand campaigns</li>
             <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Consistent visual identity across all assets</li>
@@ -863,6 +865,7 @@
         <div class="feature-card reveal-card">
           <span class="feature-card__num">03</span>
           <h3 class="feature-card__title">Brand World Building</h3>
+          <div class="feature-card__price">Custom pricing</div>
           <ul class="feature-card__list">
             <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>AI lookbooks & e-commerce imagery</li>
             <li><svg class="check-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Product visualization without prototypes</li>
@@ -875,13 +878,43 @@
     </div>
   </section>
 
+  <!-- ════════════════ SOCIAL PROOF / TESTIMONIAL ════════════════ -->
+  <section class="testimonial" id="testimonial">
+    <div class="testimonial__inner">
+      <hr class="testimonial__rule">
+      <blockquote class="testimonial__quote">“Jacquard delivered a full campaign in 4 days. The quality was indistinguishable from a traditional shoot — and 10x cheaper."<br><span class="testimonial__cite">— [Brand Name], Fashion Founder</span></blockquote>
+      <hr class="testimonial__rule">
+    </div>
+  </section>
+
   <!-- ════════════════ CONTACT ════════════════ -->
   <section class="contact" id="contact">
     <span class="contact__label reveal">Get In Touch</span>
     <h2 class="contact__title reveal">Let's <span class="thin">start the</span><br>Conversation</h2>
     <p class="contact__subtitle reveal">Available for editorial shoots, commercial campaigns, brand photography, and creative collaborations worldwide.</p>
-    <a href="mailto:abhi.sri.campaigns@gmail.com" class="contact__btn reveal">Submit inquiry</a>
-    <div class="contact__info reveal">
+    <form id="inquiryForm" class="inquiry-form reveal">
+      <div class="inquiry-grid">
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="text" name="company" placeholder="Brand / Company" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <select name="projectType" required>
+          <option value="AI Editorial">AI Editorial</option>
+          <option value="Campaign Visuals">Campaign Visuals</option>
+          <option value="Brand World Building">Brand World Building</option>
+          <option value="Other">Other</option>
+        </select>
+        <select name="budget" required>
+          <option value="Under $500">Under $500</option>
+          <option value="$500–$2000">$500–$2000</option>
+          <option value="$2000–$5000">$2000–$5000</option>
+          <option value="$5000+">$5000+</option>
+        </select>
+        <textarea name="brief" placeholder="Tell us about your project" rows="4" required></textarea>
+      </div>
+      <div class="inquiry-actions"><button type="submit" class="contact__btn">Send inquiry</button></div>
+      <div id="inquirySuccess" class="inquiry-success" style="display:none; margin-top:1rem; text-align:center;">Thanks — we received your inquiry and will reply within 48 hours.</div>
+    </form>
+      <div class="contact__info reveal">
       <div class="contact__info-block"><span class="contact__info-label">Email</span><p class="contact__info-value"><a href="mailto:abhi.sri.campaigns@gmail.com">abhi.sri.campaigns@gmail.com</a></p></div>
       <div class="contact__info-block"><span class="contact__info-label">Instagram</span><p class="contact__info-value"><a href="https://instagram.com/1cr.sri" target="_blank" rel="noopener">@1cr.sri</a></p></div>
     </div>
@@ -892,7 +925,7 @@
     <p class="footer__copy">&copy; 2026 JACQUARD STUDIO. All rights reserved.</p>
     <div class="footer__social">
       <a href="https://instagram.com/1cr.sri" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a href="#" target="_blank" rel="noopener">Behance</a>
     </div>
   </footer>
 
@@ -1008,45 +1041,12 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.reveal,.reveal-card').forEach(el => revObs.observe(el));
 
-    // ===== 5. ABOUT — Editorial typography with hierarchy =====
+    // ABOUT section is static in markup now; keep simple intersection reveal
     const aboutH = document.getElementById('aboutHeading');
-    
-    // Line 1: Strong statement
-    const line1 = document.createElement('div');
-    line1.className = 'about__line about__line--primary';
-    line1.innerHTML = '<span class="word-pull">We are Jacquard Studio.</span>';
-    line1.style.transitionDelay = '0.06s';
-    aboutH.appendChild(line1);
-    
-    // Line 2: Italic phrase (the hook)
-    const line2 = document.createElement('div');
-    line2.className = 'about__line about__line--accent';
-    line2.innerHTML = '<span class="word-pull about__italic">An AI-powered creative collective.</span>';
-    line2.style.transitionDelay = '0.18s';
-    aboutH.appendChild(line2);
-    
-    // Line 3: Supporting description (split for rhythm)
-    const line3 = document.createElement('div');
-    line3.className = 'about__line about__line--secondary';
-    line3.innerHTML = '<span class="word-pull">We design editorial, commercial,</span>';
-    line3.style.transitionDelay = '0.30s';
-    aboutH.appendChild(line3);
-    
-    const line4 = document.createElement('div');
-    line4.className = 'about__line about__line--secondary';
-    line4.innerHTML = '<span class="word-pull">and conceptual visuals for brands —</span>';
-    line4.style.transitionDelay = '0.42s';
-    aboutH.appendChild(line4);
-    
-    const line5 = document.createElement('div');
-    line5.className = 'about__line about__line--secondary';
-    line5.innerHTML = '<span class="word-pull">built entirely through artificial intelligence.</span>';
-    line5.style.transitionDelay = '0.54s';
-    aboutH.appendChild(line5);
     const aboutObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { aboutH.classList.add('visible'); aboutObs.unobserve(e.target); } });
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); aboutObs.unobserve(e.target); } });
     }, { threshold: 0.15 });
-    aboutObs.observe(aboutH);
+    if (aboutH) aboutObs.observe(aboutH);
 
     // Body text with enhanced readability
     const bodyText = "Over the last several years, we've partnered with leading brands across activewear, streetwear, and heritage fashion — delivering campaign-ready visuals at a fraction of the time and cost of traditional shoots.\n\nNo sets. No schedules. No limits. Just precise, art-directed imagery that tells your brand's story exactly the way you imagined it.";
