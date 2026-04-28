@@ -21,6 +21,10 @@
 .hero__content { position: absolute !important; bottom: 2rem !important; left: 1.25rem !important; transform: none !important; align-items: flex-start !important; text-align: left !important; width: min(92vw, 34rem) !important; padding: 0 !important; }
 .hero__title { display: none !important; }
 
+/* Force transparent header so hero video is visible on desktop */
+.hero__nav { background: transparent !important; color: #fff !important; box-shadow: none !important; }
+.hero__nav a, .hero__nav button { color: #fff !important; }
+
 @media (max-width: 639px) {
   .hero__menu-btn { top: 12px; left: 12px; padding: .45rem .8rem; font-size: .9rem; }
   .hero__brand { top: 12px; font-size: clamp(2rem, 10vw, 4.4rem) !important; letter-spacing: .28em !important; }
