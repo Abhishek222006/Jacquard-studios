@@ -1,7 +1,7 @@
 @import url("https://api.fontshare.com/v2/css?f[]=archivo@100,200,300,400,500,600,700,800,900&f[]=clash-display@200,300,400,500,600,700&display=swap");
 
 :root {
---slide-width: min(25vw, 300px);
+--slide-width: clamp(340px, 28vw, 480px);
 --slide-aspect: 2 / 3;
 
 --slide-transition-duration: 800ms;
@@ -283,7 +283,7 @@ color: #fff;
 
 @media (max-width: 639px) {
 	:root {
-		--slide-width: min(86vw, 390px);
+		--slide-width: clamp(290px, 80vw, 390px);
 		--slide-aspect: 3 / 4;
 	}
 
