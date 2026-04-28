@@ -779,6 +779,7 @@ ul, ol { list-style: none; }
     letter-spacing: .16em;
   }
   .inquiry-grid { grid-template-columns: 1fr; gap: .75rem; }
+  .inquiry-grid > * { grid-column: 1 / -1; width: 100%; min-width: 0; }
   .inquiry-grid textarea { min-height: 140px; }
   .contact__btn {
     display: block;
