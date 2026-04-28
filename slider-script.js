@@ -21,29 +21,36 @@ constructor() {
 this.rafId = 0;
 this.raf = this.raf.bind(this);
 this.callbacks = [];
-
-this.start();
 }
 
 start() {
-this.raf();
+	if (this.rafId) return;
+	this.raf();
 }
 
 stop() {
-cancelAnimationFrame(this.rafId);
+	if (!this.rafId) return;
+	cancelAnimationFrame(this.rafId);
+	this.rafId = 0;
 }
 
 raf() {
 this.callbacks.forEach(({ callback, id }) => callback({ id }));
-this.rafId = requestAnimationFrame(this.raf);
+	if (this.callbacks.length > 0) {
+		this.rafId = requestAnimationFrame(this.raf);
+	} else {
+		this.rafId = 0;
+	}
 }
 
 add(callback, id) {
 this.callbacks.push({ callback, id: id || genId() });
+	if (!this.rafId) this.start();
 }
 
 remove(id) {
 this.callbacks = this.callbacks.filter((callback) => callback.id !== id);
+	if (this.callbacks.length === 0) this.stop();
 }
 }
 
@@ -65,6 +72,10 @@ this.y = lerp(this.y, v.y, t);
 }
 
 const vec2 = (x = 0, y = 0) => new Vec2(x, y);
+
+const canTilt = window.matchMedia
+	? window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches
+	: true;
 
 function tilt(node, options) {
 let { trigger, target } = resolveOptions(node, options);
@@ -171,6 +182,9 @@ loader.style.opacity = 0;
 loader.style.pointerEvents = "none";
 }
 
+const currentIdx = slides.findIndex((slide) => slide.hasAttribute("data-current"));
+primeSliderImages(slides, currentIdx === -1 ? 0 : currentIdx);
+
 slides.forEach((slide, i) => {
 const slideInner = slide.querySelector(".slide__inner");
 const slideInfoInner = slidesInfo[i] ? slidesInfo[i].querySelector(".slide-info__inner") : null;
@@ -178,7 +192,10 @@ const slideInfoInner = slidesInfo[i] ? slidesInfo[i].querySelector(".slide-info_
 let targets = [slideInner];
 if (slideInfoInner) targets.push(slideInfoInner);
 
-tilt(slide, { target: targets });
+
+	if (canTilt) {
+		tilt(slide, { target: targets });
+	}
 	slide.addEventListener("click", () => {
 		if(!slide.hasAttribute("data-current")) return;
 		const img = slide.querySelector("img.slide--image");
@@ -194,48 +211,34 @@ if(buttons.prev) buttons.prev.addEventListener("click", change(-1));
 if(buttons.next) buttons.next.addEventListener("click", change(1));
 }
 
+function primeSliderImages(slides, currentIdx) {
+	const total = slides.length;
+	if (total === 0) return;
+
+	slides.forEach((slide, index) => {
+		const img = slide.querySelector("img.slide--image");
+		if (!img) return;
+
+		img.decoding = "async";
+
+		const isCurrent = index === currentIdx;
+		const isAdjacent = index === wrap(currentIdx + 1, total) || index === wrap(currentIdx - 1, total);
+		const isPriority = isCurrent || isAdjacent;
+
+		if (isPriority) {
+			img.loading = "eager";
+			img.fetchPriority = "high";
+		} else {
+			img.loading = "lazy";
+			img.fetchPriority = "low";
+		}
+	});
+}
+
 function setupSlider() {
-const loaderText = document.querySelector(".slider-loader__text");
-
-    // Only wait for the images within the slider!
-const images = [...document.querySelectorAll("#portfolioSlider img.slide--image")];
-const totalImages = images.length;
-let loadedImages = 0;
-let progress = {
-current: 0,
-target: 0
-};
-    
-    if (totalImages === 0) {
-        initSlider();
-        return;
-    }
-
-if (typeof imagesLoaded !== 'undefined') {
-images.forEach((image) => {
-imagesLoaded(image, (instance) => {
-if (instance.isComplete) {
-loadedImages++;
-progress.target = loadedImages / totalImages;
-}
-});
-});
-} else {
-// fallback if imagesLoaded fails to load
-progress.target = 1;
-}
-
-raf.add(({ id }) => {
-progress.current = lerp(progress.current, progress.target, 0.06);
-
-const progressPercent = Math.round(progress.current * 100);
-if(loaderText) loaderText.textContent = `${progressPercent}%`;
-
-if (progressPercent >= 99) {
-initSlider();
-raf.remove(id);
-}
-});
+	const loaderText = document.querySelector(".slider-loader__text");
+	if (loaderText) loaderText.textContent = "100%";
+	initSlider();
 }
 
 function change(direction) {
@@ -257,6 +260,7 @@ function change(direction) {
 		const newCur = (currentIdx + direction + total) % total;
 		const nextIdx = (newCur + 1) % total;
 		const prevIdx = (newCur - 1 + total) % total;
+		primeSliderImages(slides, newCur);
 
 if(slides[newCur]) { slides[newCur].setAttribute("data-current", ""); slides[newCur].style.zIndex = "100"; }
                 if(slides[nextIdx]) { slides[nextIdx].setAttribute("data-next", ""); slides[nextIdx].style.zIndex = "10"; }
