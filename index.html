@@ -59,7 +59,7 @@
 
     <div class="hero__container">
       <video class="hero__video" autoplay loop muted playsinline preload="metadata" poster="images/hero-1.jpg">
-        <source src="images/hero for website .mp4" type="video/mp4">
+        <source src="hero website/hero for website  (1).mp4" type="video/mp4">
       </video>
       <div class="noise-overlay"></div>
       <div class="hero__gradient"></div>
@@ -1232,6 +1232,36 @@
           video.preload = 'none';
         }
       });
+    })();
+  </script>
+
+  <script>
+    // Prevent mobile from downloading hero video and use poster instead.
+    (function() {
+      const isMobile = window.matchMedia('(max-width: 639px), (pointer: coarse)').matches;
+      const heroVideo = document.querySelector('.hero__video');
+      if (!heroVideo) return;
+
+      const srcEl = heroVideo.querySelector('source');
+      // Ensure the video uses the newly uploaded asset on desktop
+      if (srcEl && srcEl.src.indexOf('hero website') === -1) {
+        srcEl.src = 'hero website/hero for website  (1).mp4';
+      }
+
+      if (isMobile) {
+        // remove source to avoid mobile download and hide the element
+        if (srcEl) srcEl.removeAttribute('src');
+        heroVideo.pause();
+        heroVideo.removeAttribute('src');
+        try { heroVideo.load(); } catch (e) {}
+        heroVideo.style.display = 'none';
+        // ensure container shows poster as background for mobile
+        const cont = document.querySelector('.hero__container');
+        if (cont) cont.style.background = "#000 url('images/hero-1.jpg') center center / cover no-repeat";
+      } else {
+        // desktop: make sure video is loaded
+        try { heroVideo.load(); } catch (e) {}
+      }
     })();
   </script>
 
