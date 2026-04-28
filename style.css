@@ -25,6 +25,10 @@
 .hero__nav { background: transparent !important; color: #fff !important; box-shadow: none !important; }
 .hero__nav a, .hero__nav button { color: #fff !important; }
 
+/* push the video container down so the brand sits above the hero visual */
+.hero__container { margin-top: 3.6rem; }
+@media (max-width: 639px) { .hero__container { margin-top: 3rem; } }
+
 @media (max-width: 639px) {
   .hero__menu-btn { top: 12px; left: 12px; padding: .45rem .8rem; font-size: .9rem; }
   .hero__brand { top: 12px; font-size: clamp(2rem, 10vw, 4.4rem) !important; letter-spacing: .28em !important; }
