@@ -618,7 +618,7 @@ ul, ol { list-style: none; }
   .hero__container {
     background: #000 url("activewear european brand campaign/hf_20260228_173233_8b43ebf6-0fc6-4af2-becd-451a235e12e4.png") center center / cover no-repeat;
   }
-  .hero__video { display: none; }
+  .hero__video { display: block; width: 100%; height: 100%; object-fit: cover; }
 
   /* Make header overlay transparent and minimal on mobile */
   .hero__nav {
